@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:new_app/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -102,16 +105,26 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            IbrahimWidget(
-              title: 'asdas',
+            const IbrahimWidget(
+              title: 'asdaass',
               middle: 'asd',
               trailing: 'asdads',
             ),
           ],
         ),
       ),
+
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          var profile = Profile(name: 'Ibrahim', email: 'qdsas');
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => ProfileScreen(
+                profile: profile,
+              ),
+            ),
+          );
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
@@ -142,4 +155,15 @@ class IbrahimWidget extends StatelessWidget {
       ],
     );
   }
+}
+
+
+class Profile{
+  final String name;
+  final String email;
+
+  Profile({
+    required this.name,
+    required this.email,
+  });
 }
